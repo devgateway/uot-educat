@@ -3,7 +3,11 @@
 set -e
 
 # set the project name, BUILD_TAG is specified by Jenkins
+
 PRJ_NAME="${BUILD_TAG:-uot-educat-test}"
+
+echo PRJ_NAME
+echo BUILD_TAG
 
 # comma separated list of modules to test
 MODULES=openeducat_core
