@@ -6,9 +6,6 @@ set -e
 
 PRJ_NAME="${BUILD_TAG:-uot-educat-test}"
 
-echo PRJ_NAME
-echo BUILD_TAG
-
 # comma separated list of modules to test
 MODULES=openeducat_core
 
