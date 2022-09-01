@@ -66,6 +66,15 @@ class OpStudent(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _inherits = {"res.partner": "partner_id"}
 
+    @api.model
+    def year_selection(self):
+        year = 2000  # replace 2000 with your a start year
+        year_list = []
+        while year != 2030:  # replace 2030 with your end year
+            year_list.append((str(year), str(year)))
+            year += 1
+        return year_list
+
     first_name = fields.Char('First Name', size=128, translate=True)
     middle_name = fields.Char('Middle Name', size=128, translate=True)
     last_name = fields.Char('Last Name', size=128, translate=True)
@@ -88,9 +97,21 @@ class OpStudent(models.Model):
     nationality = fields.Many2one('res.country', 'Nationality')
     emergency_contact = fields.Many2one('res.partner', 'Emergency Contact')
     visa_info = fields.Char('Visa Info', size=64)
+    type_of_study = fields.Selection([
+        ('u', 'Under graduate'),
+        ('g', 'Graduate'),
+        ('c', 'Post Graduate')
+    ], 'Type of Study', required=True, default='u')
     id_number = fields.Char('ID Card Number', size=64)
     partner_id = fields.Many2one('res.partner', 'Partner',
                                  required=True, ondelete="cascade")
+    start_year = fields.Date('Start year')
+
+    start_only_year = fields.Selection(
+        year_selection,
+        string="Start only year",
+        default="2019",  # as a default value it would be 2019
+    )
     user_id = fields.Many2one('res.users', 'User', ondelete="cascade")
     gr_no = fields.Char("GR Number", size=20)
     category_id = fields.Many2one('op.category', 'Category')
