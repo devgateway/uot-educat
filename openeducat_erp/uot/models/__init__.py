@@ -13,17 +13,5 @@
 #
 ###############################################################################
 
-{
-  'name': "UOT Employees",
-  'version': '1.0',
-  'license': 'LGPL-3',
-  'depends': ['hr'],
-  'author': "Octavian Ciubotaru",
-  'category': 'Human Resources/Employees',
-  'description': "",
-  'installable': True,
-  'application': True,
-  'data': [
-    'views/hr_employee_views.xml'
-  ]
-}
+from . import hr_employee
+from . import op_student

@@ -13,4 +13,23 @@
 #
 ###############################################################################
 
-from . import hr_employee
+{
+  'name': "University of Tikrit Extensions",
+  'version': '1.0',
+  'license': 'LGPL-3',
+  'depends': ['hr', 'openeducat_core'],
+  'author': "Octavian Ciubotaru",
+  'category': 'Education',
+  'description': "",
+  'installable': True,
+  'application': True,
+  'data': [
+    'views/hr_employee_views.xml',
+    'views/op_student_views.xml'
+  ],
+  'assets': {
+    'web.assets_backend': [
+      '/uot/static/src/scss/style.scss'
+    ]
+  }
+}
